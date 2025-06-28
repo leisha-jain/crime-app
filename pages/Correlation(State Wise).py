@@ -8,7 +8,7 @@ st.title("Correlation Between Crime and Socioeconomic Factors(State Wise)")
 # --- Config ---
 crime_files = {
     "Rape": "Rape.csv",
-    "Murder": "murder.csv",
+    "Murder": "Murder.csv",
     "Kidnapping": "kidnapping.csv",
     "Crime Against Children": "crimeAgainstChildren.csv",
     "Dowry Death": "dowryDeaths.csv",
