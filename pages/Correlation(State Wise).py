@@ -31,8 +31,15 @@ years = [2019, 2020, 2021, 2022]
 # --- Sidebar: Selections ---
 selected_crime = st.selectbox(" Select Crime Type", list(crime_files.keys()))
 selected_factor = st.selectbox("Select Socioeconomic Factor", list(factor_files.keys()))
-selected_state_raw= st.selectbox(" Select a State", sorted(pd.read_csv("Rape.csv").iloc[:, 0].dropna().unique()))
-selected_state=selected_state_raw.strip().title()
+
+# Load and filter state list
+state_list = pd.read_csv("Rape.csv").iloc[:, 0].dropna().unique()
+state_list = [s.strip().title() for s in state_list if "total" not in s.lower()]
+state_list = sorted(set(state_list))  # remove duplicates
+
+# Use filtered list directly
+selected_state = st.selectbox(" Select a State", state_list)
+
 
 
 # --- Load & Melt Helper ---
