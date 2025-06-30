@@ -88,7 +88,7 @@ df_state = merged[merged["State"] == selected_state].dropna()
 if df_state.empty:
     st.warning("No data available for this state and selection.")
 else:
-    st.subheader(f"{selected_state}: {selected_crime} vs {selected_factor} (2019–2022)")
+    st.subheader(f"{selected_state}: {selected_crime} vs {selected_factor}")
 
     fig, ax1 = plt.subplots(figsize=(10, 5))
     ax1.set_xlabel("Year")
