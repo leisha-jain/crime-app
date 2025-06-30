@@ -31,7 +31,7 @@ years = [2019, 2020, 2021, 2022]
 # --- Sidebar: Selections ---
 selected_crime = st.selectbox(" Select Crime Type", list(crime_files.keys()))
 selected_factor = st.selectbox("Select Socioeconomic Factor", list(factor_files.keys()))
-selected_state_raw= st.selectbox(" Select a State", sorted(pd.read_csv("rape.csv").iloc[:, 0].dropna().unique()))
+selected_state_raw= st.selectbox(" Select a State", sorted(pd.read_csv("Rape.csv").iloc[:, 0].dropna().unique()))
 selected_state=selected_state_raw.strip().title()
 
 
