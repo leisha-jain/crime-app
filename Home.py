@@ -1,96 +1,176 @@
+import streamlit as st
+
+# Set wide layout
+st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
+
+# Top navbar using HTML + CSS
+st.markdown("""
+    <style>
+        
+        .topnav {
+            background-color: #333;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            z-index: 999999;
+        }
+
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 26px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        /* Push content below navbar */
+        .main .block-container {
+            padding-top: 80px; /* increased from 60 to 80 for more spacing */
+        }
+            
+        
+    </style>
+
+    <div class="topnav">
+      <a class="active" href="/">Home</a>
+      <a href="/Bar_Chart">Bar Chart</a>
+      <a href="/CorrelationAllIndia">Correlation (All India)</a>
+      <a href="/CorrelationStateWise">Correlation (State Wise)</a>
+      <a href="/Heatmap">Heatmap</a>
+      <a href="/Prediction">Prediction</a>
+    </div>
+""", unsafe_allow_html=True)
+
+# --- Page Content ---
+col1, col2 = st.columns([1, 1])
+with col1:
+    st.image("searching.png", width=80)  # map/magnifier icon
+
+    st.markdown("<h1 style='margin-top: 10px; font-size:50px '>Crime Analysis</h1>", unsafe_allow_html=True)
+
+
+with col2:
+    st.markdown("<h2 style='margin-top: 10px; font-size:30px '></h2>", unsafe_allow_html=True)
+    st.image("crime_analysis.jpg", width=1000)  # crime-related image
+    
+
+
 # import streamlit as st
-# import pandas as pd
-# import plotly.graph_objects as go
-# from streamlit_folium import folium_static
-# import geopandas as gpd
-# import json
-# import plotly.express as px
 
-# from streamlit_option_menu import option_menu
+# st.markdown("""
+#     <style>
+#         .capability-section {
+            
+#             padding: 50px 0;
+#         }
 
+#         .capability-title {
+#             margin-top: 20px;
+#             font-family: 'Arial', sans-serif;
+#             text-align: center;
+#             font-size: 36px;
+#             font-weight: 600;
+#             color: black;
+#         }
 
+#         .capability-container {
+#             display: flex;
+#             justify-content: space-around;
+#             align-items: center;
+#             margin-top: 40px;
+#             flex-wrap: wrap;
+#             color: white;
+#         }
 
+#         .capability-item {
+#             text-align: center;
+#             margin: 20px;
+#         }
 
+#         .capability-item img {
+#             width: 80px;
+#         }
 
-# # Load shapefile
-# gdf = gpd.read_file("india-polygon.shp")
+#         .capability-item p {
+#             margin-top: 10px;
+#             font-size: 18px;
+#         }
+#     </style>
 
-# # Save as GeoJSON
-# gdf.to_file("india_states.geojson", driver="GeoJSON")
-
-
-# # Streamlit app title
-# st.title("India Crime Heatmap for 2021")
-
-# # Load crime data
-# @st.cache_data
-# def load_data():
-#     df = pd.read_excel("crimes.xlsx")
-#     return df
-
-# @st.cache_data
-# def load_geojson():
-#     with open("india_states.geojson", "r") as file:
-#         geojson = json.load(file)
-#     return geojson
-
-# df = load_data()
-# geojson = load_geojson()
-
-# # Select crime type
-# crime_types = df.columns[1:]  # assuming first column is State
-# crime_type = st.selectbox("Select Crime Type", crime_types)
-
-# # Filter data
-# filtered = df[["State", crime_type]]
-# filtered.columns = ["State", "Rate"]
-
-
-
-# # Plot
-# geojson_state_key ="st_nm"
-
-
-
-# fig = go.Figure(go.Choroplethmapbox(
-#     geojson=geojson,
-#     locations=df["State"],
-#     z=df[crime_type],
-#     featureidkey=f"properties.{geojson_state_key}",  # Adjust if different
-#     colorscale="OrRd",
-#     marker_opacity=0.7,
-#     marker_line_width=0
-# ))
-
-# fig.update_layout(
-#     mapbox_style="carto-positron",
-#     mapbox_zoom=3,
-#     mapbox_center={"lat": 22.9734, "lon": 78.6569},  # center of India
-#     margin={"r":0,"t":30,"l":0,"b":0},
-#     title=f"{crime_type} Rates Across Indian States"
-# )
-
-# st.plotly_chart(fig)
-
-import streamlit as st
-from streamlit_option_menu import option_menu
+#     <div class="capability-section">
+#         <h2 class="capability-title">Crime Analysis Capabilities</h2>
+#         <div class="capability-container">
+#             <div class="capability-item">
+#                 <img src="bar-chart.png">
+#                 <p>See Top 5 States for each crime</p>
+#             </div>
+#             <div class="capability-item">
+#                 <img src="icons/analysis.png">
+#                 <p>Conduct analysis</p>
+#             </div>
+#             <div class="capability-item">
+#                 <img src="icons/investigation.png">
+#                 <p>Support investigations</p>
+#             </div>
+#             <div class="capability-item">
+#                 <img src="icons/share.png">
+#                 <p>Share your analysis</p>
+#             </div>
+#         </div>
+#     </div>
+# """, unsafe_allow_html=True)
 
 
 
-import streamlit as st
-from PIL import Image
 
-st.set_page_config(page_title="India Crime Dashboard", layout="wide")
+# Section title
+st.markdown("""
+    <div style=' padding: 50px 0;'>
+        <h2 style='text-align: center; font-size: 36px; font-weight: 600; margin-top: 20px;'>
+            Crime Analysis Capabilities
+        </h2>
+    </div>
+""", unsafe_allow_html=True)
 
-# --- Banner ---
-st.markdown("<h1 style='text-align: center;'>Crime Data Analysis</h1>", unsafe_allow_html=True)
-st.markdown("<h4 style='text-align: center;'>Visualizing crime trends across Indian states</h4>", unsafe_allow_html=True)
-st.markdown("---")
+# Icons with captions using Streamlit layout
+col1, col2, col3, col4 = st.columns(4)
 
-# --- Description Section ---
-st.markdown("### Welcome!")
-st.write("""
-This interactive dashboard lets you explore and analyze crime data across India. 
-View heatmaps, top 5 crime-affected states, and draw insights from trends in crimes.
-""")
+with col1:
+    
+    
+    
+    st.image("icons/bar-chart.png", width=80)
+    st.markdown("<p style='font-size:18px;'>See Bar Charts</p>", unsafe_allow_html=True)
+    
+
+
+with col2:
+    
+    st.image("icons/correlation.png", width=80)
+    st.markdown("<p style=' font-size:18px;'>Analyze Correlation</p>", unsafe_allow_html=True)
+    
+with col3:
+    
+    st.image("icons/india.png", width=70)
+    st.markdown("<p style=' font-size:18px;'>See interactive HeatMaps</p>", unsafe_allow_html=True)
+    
+with col4:
+    
+    st.image("icons/predictive-chart.png", width=70)
+    st.markdown("<p style='font-size:18px;'>Predict for future years</p>", unsafe_allow_html=True)
+    
 
