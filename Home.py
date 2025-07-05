@@ -47,11 +47,11 @@ st.markdown("""
 
     <div class="topnav">
       <a class="active" href="/">Home</a>
-      <a href="/Bar_Chart">Bar Chart</a>
-      <a href="/CorrelationAllIndia">Correlation (All India)</a>
-      <a href="/CorrelationStateWise">Correlation (State Wise)</a>
-      <a href="/Heatmap">Heatmap</a>
-      <a href="/Prediction">Prediction</a>
+      <a href="/Bar_Chart" target="_self">Bar Chart</a>
+      <a href="/CorrelationAllIndia" target="_self">Correlation (All India)</a>
+      <a href="/CorrelationStateWise" target="_self">Correlation (State Wise)</a>
+      <a href="/Heatmap" target="_self">Heatmap</a>
+      <a href="/Prediction" target="_self">Prediction</a>
     </div>
 """, unsafe_allow_html=True)
 
@@ -68,71 +68,6 @@ with col2:
     st.image("crime_analysis.jpg", width=1000)  # crime-related image
     
 
-
-# import streamlit as st
-
-# st.markdown("""
-#     <style>
-#         .capability-section {
-            
-#             padding: 50px 0;
-#         }
-
-#         .capability-title {
-#             margin-top: 20px;
-#             font-family: 'Arial', sans-serif;
-#             text-align: center;
-#             font-size: 36px;
-#             font-weight: 600;
-#             color: black;
-#         }
-
-#         .capability-container {
-#             display: flex;
-#             justify-content: space-around;
-#             align-items: center;
-#             margin-top: 40px;
-#             flex-wrap: wrap;
-#             color: white;
-#         }
-
-#         .capability-item {
-#             text-align: center;
-#             margin: 20px;
-#         }
-
-#         .capability-item img {
-#             width: 80px;
-#         }
-
-#         .capability-item p {
-#             margin-top: 10px;
-#             font-size: 18px;
-#         }
-#     </style>
-
-#     <div class="capability-section">
-#         <h2 class="capability-title">Crime Analysis Capabilities</h2>
-#         <div class="capability-container">
-#             <div class="capability-item">
-#                 <img src="bar-chart.png">
-#                 <p>See Top 5 States for each crime</p>
-#             </div>
-#             <div class="capability-item">
-#                 <img src="icons/analysis.png">
-#                 <p>Conduct analysis</p>
-#             </div>
-#             <div class="capability-item">
-#                 <img src="icons/investigation.png">
-#                 <p>Support investigations</p>
-#             </div>
-#             <div class="capability-item">
-#                 <img src="icons/share.png">
-#                 <p>Share your analysis</p>
-#             </div>
-#         </div>
-#     </div>
-# """, unsafe_allow_html=True)
 
 
 
@@ -173,4 +108,8 @@ with col4:
     st.image("icons/predictive-chart.png", width=70)
     st.markdown("<p style='font-size:18px;'>Predict for future years</p>", unsafe_allow_html=True)
     
+
+
+
+
 
