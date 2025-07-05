@@ -71,8 +71,8 @@ geojson = load_geojson()
 
 # Crime file dictionary (label → filename)
 crime_files = {
-    "Rape": "rape.csv",
-    "Murder": "murder.csv",
+    "Rape": "Rape.csv",
+    "Murder": "Murder.csv",
     "Kidnapping": "kidnapping.csv",
     "Crime Against Children": "crimeAgainstChildren.csv",
     "Dowry Death": "dowryDeaths.csv",
