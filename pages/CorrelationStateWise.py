@@ -2,13 +2,66 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
+
+
+st.markdown("""
+    <style>
+        
+        .topnav {
+            background-color: #333;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            z-index: 999999;
+        }
+
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 26px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        /* Push content below navbar */
+        .main .block-container {
+            padding-top: 80px; /* increased from 60 to 80 for more spacing */
+        }
+            
+        
+    </style>
+
+    <div class="topnav">
+      <a href="/" target="_self">Home</a>
+      <a href="/Bar_Chart" target="_self">Bar Chart</a>
+      <a href="/CorrelationAllIndia" target="_self">Correlation (All India)</a>
+      <a class="active" href="/CorrelationStateWise" target="_self">Correlation (State Wise)</a>
+      <a href="/Heatmap" target="_self">Heatmap</a>
+      <a href="/Prediction" target="_self">Prediction</a>
+    </div>
+""", unsafe_allow_html=True) 
+
 st.title("Correlation Between Crime and Socioeconomic Factors(State Wise)")
 
 # --- Config ---
 crime_files = {
-    "Rape": "Rape.csv",
-    "Murder": "Murder.csv",
+    "Rape": "rape.csv",
+    "Murder": "murder.csv",
     "Kidnapping": "kidnapping.csv",
     "Crime Against Children": "crimeAgainstChildren.csv",
     "Dowry Death": "dowryDeaths.csv",
@@ -33,13 +86,12 @@ selected_crime = st.selectbox(" Select Crime Type", list(crime_files.keys()))
 selected_factor = st.selectbox("Select Socioeconomic Factor", list(factor_files.keys()))
 
 # Load and filter state list
-state_list = pd.read_csv("Rape.csv").iloc[:, 0].dropna().unique()
+state_list = pd.read_csv("rape.csv").iloc[:, 0].dropna().unique()
 state_list = [s.strip().title() for s in state_list if "total" not in s.lower()]
 state_list = sorted(set(state_list))  # remove duplicates
 
 # Use filtered list directly
 selected_state = st.selectbox(" Select a State", state_list)
-
 
 
 # --- Load & Melt Helper ---
@@ -95,7 +147,7 @@ df_state = merged[merged["State"] == selected_state].dropna()
 if df_state.empty:
     st.warning("No data available for this state and selection.")
 else:
-    st.subheader(f"{selected_state}: {selected_crime} vs {selected_factor}")
+    st.subheader(f"{selected_state}: {selected_crime} vs {selected_factor} ")
 
     fig, ax1 = plt.subplots(figsize=(10, 5))
     ax1.set_xlabel("Year")
