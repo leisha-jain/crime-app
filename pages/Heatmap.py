@@ -3,7 +3,59 @@ import pandas as pd
 import plotly.graph_objects as go
 import json
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
+
+st.markdown("""
+    <style>
+        
+        .topnav {
+            background-color: #333;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            z-index: 999999;
+        }
+
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 26px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        /* Push content below navbar */
+        .main .block-container {
+            padding-top: 80px; /* increased from 60 to 80 for more spacing */
+        }
+            
+        
+    </style>
+
+    <div class="topnav">
+      <a href="/" target="_self">Home</a>
+      <a href="/Bar_Chart" target="_self">Bar Chart</a>
+      <a href="/CorrelationAllIndia" target="_self">Correlation (All India)</a>
+      <a href="/CorrelationStateWise" target="_self">Correlation (State Wise)</a>
+      <a class="active" href="/Heatmap" target="_self">Heatmap</a>
+      <a href="/Prediction" target="_self">Prediction</a>
+    </div>
+""", unsafe_allow_html=True)
+
 st.title("India Crime Rate Heatmap")
 
 # Load India GeoJSON
@@ -19,8 +71,8 @@ geojson = load_geojson()
 
 # Crime file dictionary (label → filename)
 crime_files = {
-    "Rape": "Rape.csv",
-    "Murder": "Murder.csv",
+    "Rape": "rape.csv",
+    "Murder": "murder.csv",
     "Kidnapping": "kidnapping.csv",
     "Crime Against Children": "crimeAgainstChildren.csv",
     "Dowry Death": "dowryDeaths.csv",
@@ -124,4 +176,5 @@ st.plotly_chart(fig, use_container_width=True)
 # Optional: data table
 with st.expander("📋 Show Data Table"):
     st.dataframe(merged[["State", "Crime_Count", "Population", "Crime_Rate"]])
+
 
