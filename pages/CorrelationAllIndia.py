@@ -61,7 +61,7 @@ st.title("Correlation Between Crime and Socioeconomic Factors (All India)")
 crime_files = {
     "Rape": "Rape.csv",
     "Murder": "Murder.csv",
-    "Kidnapping": "Kidnapping.csv",
+    "Kidnapping": "kidnapping.csv",
     "Crime Against Children": "crimeAgainstChildren.csv",
     "Dowry Death": "dowryDeaths.csv",
     "Cybercrime": "cyberCrime.csv",
