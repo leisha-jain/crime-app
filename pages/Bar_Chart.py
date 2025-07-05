@@ -57,8 +57,8 @@ st.title("Top 5 States by Crime")
 
 # Mapping of crime names to filenames
 crime_files = {
-    "Rape": "rape.csv",
-    "Murder": "murder.csv",
+    "Rape": "Rape.csv",
+    "Murder": "Murder.csv",
     "Kidnapping": "kidnapping.csv",
     "Crime Against Children": "crimeAgainstChildren.csv",
     "Dowry Death": "dowryDeaths.csv",
